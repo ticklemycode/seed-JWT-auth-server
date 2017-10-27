@@ -13,18 +13,19 @@ tokenForUser = (user) => {
     return jwt.encode({ sub: user.id, iat: timestamp, email: user.email }, config.secret);
 }
 
-/**
- * Authentication.signin
- */
+
+//========================================
+// Signin Route - Authentication.signin
+//========================================
 exports.signin = (req, res, next) => {
     // user is already authorized just return token
     res.send({ token: tokenForUser(req.user) });
 }
 
 
-/**
- * Authentication.signup
- */
+//========================================
+// Signup Route - Authentication.signup
+//========================================
 exports.signup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;

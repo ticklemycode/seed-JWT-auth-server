@@ -1,4 +1,5 @@
-# Seed Authentication Server using JWT
+# Simple Node Authentication Server using JWT
+Starter authentication server that utilizes JWT or local passport strategies for protected resources.
 
 ### Requirements
 * [NodeJS](https://nodejs.org/en/) > 6.x
@@ -10,7 +11,28 @@
 * [passport](http://www.passportjs.org/) - Simple, unobtrusive authentication for Node.js
 * [JWT](https://jwt.io/) - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
 
+### Features
+* user model
+* encryption of passwords
+
 ---
+
+Add your own `config.js` in the root directory of your project.
+> You will see errors when trying to start the app if you don't provide these properties.
+
+```javascript
+// config.js
+
+module.exports = {
+    // Secret key for JWT signing and encryption
+    'secret': 'super secret passphrase',
+    // Database connection information
+    'database': 'mongodb://localhost:auth/auth',
+    // Setting port for server
+    'port': process.env.PORT || 3090
+}
+```
+
 ## Signup and Signin routes will return JWT to be used for subsequent request
 **Signup** route will require `email` and `password` to be sent and will check if email provided is already in use.
 ```javascript
@@ -98,5 +120,7 @@ curl -X POST \
 ```
 
 ---
+
+Reference: http://blog.slatepeak.com/refactoring-a-basic-authenticated-api-with-node-express-and-mongo/
 
 

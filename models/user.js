@@ -2,20 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require ('bcrypt-nodejs');
 
-// Define our model 
+//================================
+// User Schema
+//================================
 const userSchema = new Schema({
-    email: {type: String, unique: true, lowercase: true},
-    password: String
+    email: {
+        type: String, 
+        unique: true, 
+        lowercase: true, required: true
+    },
+    password: {
+        type: String, 
+        required: true
+    }
 });
 
 // pre save hook, encrypt password
 userSchema.pre('save', function(next) {
-    const user = this;
+    const user = this,
+    SALT_FACTOR = 10;
 
     if (!user.isNew) { next(); } 
 
     // generate a salt then run call back
-    bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.genSalt(SALT_FACTOR, (err, salt) => {
         if (err) { return next(err) }
 
         // hash (encrypt) password using the salt
