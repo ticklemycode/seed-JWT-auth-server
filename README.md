@@ -38,7 +38,6 @@ app.get('/', requireAuth, (req, res, next) => {
 ```bash
 curl -X POST \
   http://localhost:3090/signup \
-  -H 'cache-control: no-cache' \
   -d '{
 	"email":"me@me.com",
 	"password": "test"
@@ -67,7 +66,6 @@ or
 curl -X GET \
   http://localhost:3090/ \
   -H 'authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1OWYzNmQwNzg5ZTYwNTFlN2FkZjY2ZTkiLCJpYXQiOjE1MDkxMjUzODMyMTQsImVtYWlsIjoiYnV0dHRlcjJAZXh4YW1wbGUuY29tIn0.sWrBHQ85ErGQF1lZ18qB8LGfKutAOgXifbb8yX9b0Ds' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
 ```
 
@@ -85,7 +83,6 @@ curl -X GET \
 ```bash
 curl -X POST \
   http://localhost:3090/signin \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{
 	"email":"me@me.com",
