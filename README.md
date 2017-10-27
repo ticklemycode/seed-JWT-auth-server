@@ -11,13 +11,13 @@
 * [JWT](https://jwt.io/) - JSON Web Tokens are an open, industry standard RFC 7519 method for representing claims securely between two parties.
 
 ---
-## Routes that will return JWT to be used for subsequent request
-Signup route will require `email` and `password` to be sent and will check if email provided is already in use.
+## Signup and Signin routes will return JWT to be used for subsequent request
+**Signup** route will require `email` and `password` to be sent and will check if email provided is already in use.
 ```javascript
 app.post('/signup', Authentication.signup);
 ```
 
-Signin route will also require `email` and `password` to be sent and server will validate credentials provided.
+**Signin** route will also require `email` and `password` to be sent and server will validate credentials provided.
 ```javascript
 app.post('/signin', requireSignin, Authentication.signin);
 ```
